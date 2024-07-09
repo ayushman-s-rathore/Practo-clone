@@ -10,7 +10,7 @@ import { Toaster } from 'react-hot-toast';
 
 
 const client = new ApolloClient({
-  uri: 'http://localhost:8000/graphql', // Replace with your GraphQL API endpoint
+  uri: 'https://practo-clone.onrender.com/graphql', // Replace with your GraphQL API endpoint
   cache: new InMemoryCache(),
 });
 
