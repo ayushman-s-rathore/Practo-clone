@@ -3,7 +3,7 @@ import crypto from "crypto";
 export const resolvers = {
   Query: {
     async doctors(_, __, { pool }) {
-      const [rows] = await pool.query("Select * from doctors");
+      const [rows] = await pool.query("Select * from Doctors");
       // console.log(rows[0])
       return rows.map((row) => ({
         id: row.id,
@@ -16,7 +16,7 @@ export const resolvers = {
     async doctorName(_, args, { pool }) {
       // console.log(args.name)
       const [rows] = await pool.query(
-        "SELECT * FROM doctors WHERE name LIKE ? ",
+        "SELECT * FROM Doctors WHERE name LIKE ? ",
         [`%${args.name}%`]
       );
 
