@@ -25,7 +25,7 @@ const LoginPage = () => {
         if(!Login){
             const user={fullName,email,password,cnfPassword}
             try{
-              const res= await axios.post("http://localhost:8000/api/user/register",user)
+              const res= await axios.post("https://practo-clone.onrender.com/api/user/register",user)
               if(res.data.success){
                 
                 toast.success(res.data.message)
@@ -42,7 +42,7 @@ const LoginPage = () => {
           }else{
             setLoading(true)
             try{
-              const res= await axios.post(`http://localhost:8000/api/user/login`,{email, password})
+              const res= await axios.post(`https://practo-clone.onrender.com/api/user/login`,{email, password})
              if(res.data.success){
                 toast.success(res.data.message)
               }
