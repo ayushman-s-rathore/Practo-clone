@@ -16,7 +16,7 @@ const SearchBar = () => {
     const navigate=useNavigate()
     const dispatch= useDispatch()
     console.log(display)
-    // dispatch(setSearchOpen(true))
+    dispatch(setSearchOpen(true))
     const [text, setText] = useState("");
     const [location, setLocation]=useState('Springfield')
   const [getDoctors, { loading, error, data }] = useLazyQuery(GET_LISTING);
@@ -44,7 +44,7 @@ const SearchBar = () => {
         <IoIosSearch className='fill-slate-500 mr-2 ml-1'/>
         <input type='text' placeholder='Search Doctors' value={text} onChange={(e)=>setText(e.target.value)}  className='w-full border-none focus:border-transparent focus:outline-none '/>
         </div>
-        <div className= {display?"absolute w-1/4 mt-8 border-l rounded-lg bg-white ":"hidden"} >
+        <div className= {display?"absolute w-[25rem] mt-8 ml-48 border-l rounded-lg bg-white ":"hidden"} >
         {
             text && data && (
                 <>
