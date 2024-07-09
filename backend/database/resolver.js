@@ -42,7 +42,7 @@ export const resolvers = {
     },
     async doctorID(_, args, { pool }) {
       // console.log(args.name)
-      const [rows] = await pool.query("SELECT * FROM doctors WHERE id = ? ", [
+      const [rows] = await pool.query("SELECT * FROM Doctors WHERE id = ? ", [
         args.id,
       ]);
 
@@ -68,7 +68,7 @@ export const resolvers = {
       const doctorIds = JSON.parse(specialization.doctors_id);
       console.log(doctorIds);
 
-      const [rows] = await pool.query("SELECT * FROM doctors WHERE id IN (?)", [
+      const [rows] = await pool.query("SELECT * FROM Doctors WHERE id IN (?)", [
         doctorIds,
       ]);
       // console.log(rows)
@@ -124,9 +124,9 @@ export const resolvers = {
             d.name AS doctor_name,
             d.specialization
           FROM doc_clinic cdm
-          JOIN clinics c ON cdm.clinic_id = c.id
+          JOIN Clinics c ON cdm.clinic_id = c.id
           JOIN patient_doctor_mapping a ON a.clinic_id = c.id
-          JOIN doctors d ON a.doc_id = d.id
+          JOIN Doctors d ON a.doc_id = d.id
           WHERE cdm.doc_id = ?`,
         [docId]
       );
@@ -264,8 +264,8 @@ export const resolvers = {
                   d.specialization, d.experience, d.fees, c.id as clinic_id, c.name as clinic_name, 
                   c.address as clinic_address
            FROM patient_doctor_mapping a
-           JOIN doctors d ON a.doc_id = d.id
-           JOIN clinics c ON a.clinic_id = c.id
+           JOIN Doctors d ON a.doc_id = d.id
+           JOIN Clinics c ON a.clinic_id = c.id
            WHERE a.id = ?`,
         [appId]
       );
